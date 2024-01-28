@@ -102,23 +102,23 @@ inquirer
   .then((data) => {
     const ReadMeFile =
     `# ${data.title}
-    ![Static Badge](https://img.shields.io/badge/HTML-%23E86B20?style=for-the-badge&logo=html5&labelColor=black)
-    ## Description  :bookmark_tabs:
+![Static Badge](https://img.shields.io/badge/HTML-%23E86B20?style=for-the-badge&logo=html5&labelColor=black)
+## Description  :bookmark_tabs:
     ${data.description}
-    ## Table of Contents
+## Table of Contents
     - [Installation](#installation)
     - [Usage](#usage)
     - [Credits](#credits)
     - [License](#license)
     - [Contribute](#contribute)
     - [Tests](#tests)
-    ## Installation :computer:
+## Installation :computer:
     ${data.installation}
-    ## Usage :bar_chart:
+## Usage :bar_chart:
     ${data.usage}
-    ## Credits :email:
+## Credits :email:
     github.com/${data.github}
-    ## License :memo:
+## License :memo:
     ${data.installation}
     `
      fs.writeFile('README.md', ReadMeFile, (err) => err ? console.log(err) : console.log('Check your new ReadMe'))
