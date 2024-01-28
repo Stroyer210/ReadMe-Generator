@@ -1,126 +1,101 @@
-// TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-// TODO: Create an array of questions for user input
-// const questions = [
-// inquirer
-//   .prompt([
-//     {
-//       type: 'input',
-//       message: 'What is your user name?',
-//       name: 'name',
-//     },
-//     {
-//       type: 'input',
-//       message: 'Where do you live?',
-//       name: 'location',
-//     },
-//     {
-//       type: 'input',
-//       message: 'Tell us something about yourself.',
-//       name: 'bio',
-//     },
-//     {
-//       type: 'checkbox',
-//       message: 'What technologies do you know?',
-//       name: 'tech',
-//       choices: ['HTML', 'CSS', 'JS', 'Node.js','React','Python']
-//     },
-//     {
-//       type: 'input',
-//       message: 'What is your linkedIn URL?',
-//       name: 'linkedIn',
-//     },
-//     {
-//       type: 'input',
-//       message: 'What is your GitHub URL?',
-//       name: 'GitHub',
-//     },
-//   ])
-// ];
-
-// TODO: Create a function to write README file
-// function writeToFile(fileName, data) {
-//     fs.writeFile('README.md', data, (err) => err ? console.log(err) : console.log('Check your new README.md'))
-// }
-
-// TODO: Create a function to initialize app
-// function init() {}
-
-// Function call to initialize app
-// init();
-
-inquirer
-  .prompt([
-    {
-      type: 'input',
-      message: 'What is the title of your project?',
-      name: 'title',
-    },
-    {
-      type: 'input',
-      message: 'What is the description of your project?',
-      name: 'description',
-    },
-    {
-      type: 'input',
-      message: 'What are the installation instructions of it?',
-      name: 'installation',
-    },
-    {
-      type: 'input',
-      message: 'What is the usage of your project?',
-      name: 'usage',
-    },
-    {
-      type: 'input',
-      message: 'Write some tests for your application:',
-      name: 'tests',
-    },
-    {
-      type: 'input',
-      message: 'Let us know the contribution guidelines:',
-      name: 'contribution',
-    },
-    {
-      type: 'list',
-      message: 'What kind of license would you like to use in your project?',
-      name: 'licenses',
-      choices: ['License preferred by the community', 'MIT License', 'GNU GPLv3']
-    },
-    {
-      type: 'input',
-      message: 'What is your GitHub username?',
-      name: 'github',
-    },
-    {
-      type: 'input',
-      message: 'What is your Gmail?',
-      name: 'gmail',
-    },
-  ])
+ 
+function init() {
+    inquirer
+  .prompt([{
+    type: 'input',
+    message: 'What is the title of your project?',
+    name: 'title',
+    validate: (value) =>{if(value){return true} else {return 'I need a value to continue'}},
+  },
+  {
+    type: 'input',
+    message: 'Please write a brief description of your project:',
+    name: 'description',
+    validate: (value) =>{if(value){return true} else {return 'I need a value to continue'}},
+  },
+  {
+    type: 'input',
+    message: 'What was your motivation to create this project? (Optional)',
+    name: 'motivation',
+  },
+  {
+    type: 'input',
+    message: 'What command(s) should be run to install dependencies? (Installation)',
+    name: 'installation',
+  },
+  {
+    type: 'input',
+    message: 'How do you use your application?',
+    name: 'usage',
+  },
+  {
+    type: 'input',
+    message: 'What command should be run to run tests?',
+    name: 'tests',
+  },
+  {
+    type: 'input',
+    message: 'What does the user need to know about contributing to the repo?',
+    name: 'contribute',
+  },
+  {
+    type: 'list',
+    message: 'What kind of license did you use in your project?',
+    name: 'license',
+    choices: ['MPL', 'MIT', 'Perl','Apache2.0','GPLv3', 'LGPLv3', 'N/A'],
+    validate: (value) =>{if(value){return true} else {return 'I need a value to continue'}},
+  },
+  {
+    type: 'input',
+    message: 'What is your GitHub username?',
+    name: 'github',
+    validate: (value) =>{if(value){return true} else {return 'I need a value to continue'}},
+  },
+  {
+    type: 'input',
+    message: 'What is your email?',
+    name: 'email',
+    validate: (value) =>{if(value){return true} else {return 'I need a value to continue'}},
+  },])
+  
   .then((data) => {
     const ReadMeFile =
     `# ${data.title}
-![Static Badge](https://img.shields.io/badge/HTML-%23E86B20?style=for-the-badge&logo=html5&labelColor=black)
+![Static Badge](https://img.shields.io/badge/${data.license}-%2316A5F3?style=for-the-badge&label=License)
+![Static Badge](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&labelColor=black)![Static Badge](https://img.shields.io/badge/Node.js-%23339933?style=for-the-badge&logo=node.js&labelColor=black)
 ## Description  :bookmark_tabs:
-    ${data.description}
-## Table of Contents
-    - [Installation](#installation)
-    - [Usage](#usage)
-    - [Credits](#credits)
-    - [License](#license)
-    - [Contribute](#contribute)
-    - [Tests](#tests)
-## Installation :computer:
-    ${data.installation}
-## Usage :bar_chart:
-    ${data.usage}
-## Credits :email:
-    github.com/${data.github}
-## License :memo:
-    ${data.installation}
-    `
-     fs.writeFile('README.md', ReadMeFile, (err) => err ? console.log(err) : console.log('Check your new ReadMe'))
-  })
+${data.description}. 
+${data.motivation}
+## Table of Contents :computer:
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contribute](#contribute)
+- [Tests](#tests)
+- [Questions](#questions)
+## Installation
+  ${data.installation}
+## Usage
+${data.usage}
+## License
+The project is licensed under the ${data.license}.
+## Contribute
+${data.contribute}
+## Tests
+    ${data.tests}
+## Questions
+* This is my GitHub: [github.com/${data.github}](https://github.com/${data.github})
+* This is my Email: [${data.email}](${data.email})
+
+You can send me an email and ask me any questions you would like.
+`
+fs.writeFile('README.md', ReadMeFile, (err) => err ? console.log(err) : console.log('Check your new ReadMe!!'))
+})
   
+}
+
+init();
+
+
