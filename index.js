@@ -1,6 +1,8 @@
+//Packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
  
+//Function that initialize the app and write the README file
 function init() {
     inquirer
   .prompt([{
@@ -61,13 +63,13 @@ function init() {
   },])
   
   .then((data) => {
+    //We create the README.md
     const ReadMeFile =
-    `# ${data.title}
+    `# ${data.title.toUpperCase()}
 ![Static Badge](https://img.shields.io/badge/${data.license}-%2316A5F3?style=for-the-badge&label=License)
-![Static Badge](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&labelColor=black)![Static Badge](https://img.shields.io/badge/Node.js-%23339933?style=for-the-badge&logo=node.js&labelColor=black)
 ## Description  :bookmark_tabs:
 ${data.description}. 
-${data.motivation}
+${data.motivation}.
 ## Table of Contents :computer:
 - [Installation](#installation)
 - [Usage](#usage)
@@ -76,7 +78,7 @@ ${data.motivation}
 - [Tests](#tests)
 - [Questions](#questions)
 ## Installation
-  ${data.installation}
+    ${data.installation}.
 ## Usage
 ${data.usage}
 ## License
@@ -87,15 +89,16 @@ ${data.contribute}
     ${data.tests}
 ## Questions
 * This is my GitHub: [github.com/${data.github}](https://github.com/${data.github})
-* This is my Email: [${data.email}](${data.email})
+* This is my Email: [${data.email}](mailto:${data.email})
 
 You can send me an email and ask me any questions you would like.
 `
-fs.writeFile('README.md', ReadMeFile, (err) => err ? console.log(err) : console.log('Check your new ReadMe!!'))
+// We write the file
+fs.writeFile('NewREADME.md', ReadMeFile, (err) => err ? console.log(err) : console.log('Check your new ReadMe!!'))
 })
-  
 }
 
+//Calling the function
 init();
 
 
