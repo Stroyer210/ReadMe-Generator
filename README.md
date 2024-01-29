@@ -15,20 +15,28 @@ You are able to check this app by two ways:
  2. If you want to try it yourself, you have to have "Node.js" installed in your computer, then you have to clone my repository and run it locally.
 
 ## Usage :bar_chart:
-If you are unable to open the URL, I attached a screenshot of it below:
-    ---
-    ![This is how the application looks like with some cities already searched.](public/images/weather1.png)
-    ---
-    
+
 If you want to try the app yourself make sure you have "Node.js" in your computer, if you don't you can go to your browser and look it up and install it. After that, you have to clone the files into your computer. Then you have to open it in your code editor of preference (e.g. VSCode). Then in the terminal you have to run:
     
     npm i inquirer@8.2.4
 
+ 
+ ![Running the first code.](public/inquirer1.png)
+ ---
 After that run the next line:
 
     node index.js
 
+ ![Running the next line.](public/inquirer2.png)
+ ---
 After running the last code, you will have some questions and as soon as you are done answering them you will have a new readme called "NewREADME.md". You can open it and modify any mistakes or typos that you had. Enjoy it!
+
+ ![All the questions are answered.](public/inquirer3.png)
+ ---
+  ![Checking the new README.](public/inquirer4.png)
+ ---
+  ![Checking the new README.](public/inquirer5.png)
+ ---
 
 ## Credits :email:
 
